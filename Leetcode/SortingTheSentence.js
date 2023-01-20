@@ -1,31 +1,25 @@
-var sortSentence = function(s) {
+var sortSentence = function (s) {
+  s = s.split(" ");
 
-    s = s.split(' ');
+  let temp = [];
+  for (let i = 0; i < s.length; i++) {
+    temp.push(s[i].split("").reverse().join(""));
+  }
 
-    let temp = [];
-    for (let i = 0; i < s.length; i++) {
-        temp.push(s[i].split('').reverse().join(''));
-    }
+  temp.sort();
 
-    temp.sort()
+  result = [];
+  for (let j = 0; j < s.length; j++) {
+    result.push(temp[j].slice(1).split("").reverse().join(""));
+  }
 
-    result = [];
-    for (let j = 0; j < s.length; j++) {
-        result.push(temp[j].slice(1).split('').reverse().join(''))
-    }
-
-    return result.join(' ');
+  return result.join(" ");
 };
 
-// (runtime / memory)
-//  76 ms / 38.8 MB
-
-
-
-var sortSentence = function(s) {
-
-    return s.split(' ')
-        .sort((a, b) => a[a.length - 1] - b[b.length - 1])
-        .map((word) => word.slice(0, word.length - 1))
-        .join(' ');
+var sortSentence = function (s) {
+  return s
+    .split(" ")
+    .sort((a, b) => a[a.length - 1] - b[b.length - 1])
+    .map((word) => word.slice(0, word.length - 1))
+    .join(" ");
 };
