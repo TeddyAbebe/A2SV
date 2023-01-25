@@ -1,16 +1,10 @@
 var numIdenticalPairs = function (nums) {
-  var min = 0;
-  var count = 0;
-  for (var i = 1; i < nums.length; i++) {
-    if (nums[min] === nums[i]) {
-      count++;
-      if (i === nums.length - 1) {
-        min++;
-        i = min;
+  let count = 0;
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] === nums[j]) {
+        count += 1;
       }
-    } else if (i === nums.length - 1) {
-      min++;
-      i = min;
     }
   }
   return count;
