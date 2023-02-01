@@ -1,4 +1,4 @@
-/** NOTE 时间复杂度
+/** NO
  * @param {string} s
  * @return {string}
  */
