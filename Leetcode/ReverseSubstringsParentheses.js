@@ -1,3 +1,8 @@
+/** NOTE 时间复杂度
+ * @param {string} s
+ * @return {string}
+ */
+
 function reverseParentheses(s) {
   while (s.includes("(")) {
     const endBracket = s.indexOf(")");
