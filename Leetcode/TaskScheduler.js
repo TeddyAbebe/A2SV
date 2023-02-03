@@ -28,4 +28,3 @@ var leastInterval = function (tasks, n) {
   const intervalRequired = (maxCount - 1) * (n + 1) + taskCountOfMaxCount;
   return Math.max(intervalRequired, tasks.length);
 };
- 
