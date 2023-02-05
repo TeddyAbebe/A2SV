@@ -4,25 +4,35 @@
  * @return {number}
  */
 var longestSubarray = function (nums, limit) {
-  let maxLength = 1;
-  let left = 0;
-  let right = 0;
-  let minValue = nums[0];
-  let maxValue = nums[0];
+  let len = nums.length;
 
-  while (right < nums.length) {
-    minValue = Math.min(minValue, nums[right]);
-    maxValue = Math.max(maxValue, nums[right]);
+  let maxsub = 0;
+  let i = 0,
+    j = 0;
+  let minDeque = [],
+    maxDeque = [];
+  while (j < len) {
+    while (minDeque.length && nums[minDeque[minDeque.length - 1]] >= nums[j]) {
+      minDeque.pop();
+    }
+    minDeque.push(j);
+    while (maxDeque.length && nums[maxDeque[maxDeque.length - 1]] <= nums[j]) {
+      maxDeque.pop();
+    }
+    maxDeque.push(j);
 
-    if (maxValue - minValue <= limit) {
-      maxLength = Math.max(maxLength, right - left + 1);
-      right++;
+    if (nums[maxDeque[0]] - nums[minDeque[0]] > limit) {
+      i++;
+      if (i > minDeque[0]) {
+        minDeque.shift();
+      }
+      if (i > maxDeque[0]) {
+        maxDeque.shift();
+      }
     } else {
-      left++;
-      minValue = nums[left];
-      maxValue = nums[left];
+      maxsub = Math.max(maxsub, j - i + 1);
+      j++;
     }
   }
-
-  return maxLength;
+  return maxsub;
 };
