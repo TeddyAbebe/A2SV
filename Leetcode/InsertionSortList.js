@@ -9,24 +9,24 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var insertionSortList = function(head) {
-    if (!head || !head.next) return head;
-    let place = new ListNode(0);
-    place.next = head;
-    let curr = head;
-    while (curr.next) {
-        if (curr.next.val < curr.val) {
-            let pre = place;
-            while (pre.next.val < curr.next.val) {
-                pre = pre.next;
-            }
-            let temp = curr.next;
-            curr.next = temp.next;
-            temp.next = pre.next;
-            pre.next = temp;
-        } else {
-            curr = curr.next;
-        }
+var insertionSortList = function (head) {
+  if (!head || !head.next) return head;
+  let place = new ListNode(0);
+  place.next = head;
+  let curr = head;
+  while (curr.next) {
+    if (curr.next.val < curr.val) {
+      let pre = place;
+      while (pre.next.val < curr.next.val) {
+        pre = pre.next;
+      }
+      let temp = curr.next;
+      curr.next = temp.next;
+      temp.next = pre.next;
+      pre.next = temp;
+    } else {
+      curr = curr.next;
     }
-    return place.next;
+  }
+  return place.next;
 };
